@@ -146,7 +146,7 @@ form?.addEventListener('submit', (event) => {
   const body = encodeURIComponent(
     `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nSize: ${data.get('size')}\n\nProject Details:\n${data.get('message')}`
   );
-  const emailHref = `mailto:info@rynodumpsters.com?subject=${subject}&body=${body}`;
+  const emailHref = `mailto:ryan@tippettsolutions.com?subject=${subject}&body=${body}`;
 
   feedback.textContent = 'Opening your email app with your quote request...';
   feedback.className = 'min-h-6 text-sm text-emerald-400';
