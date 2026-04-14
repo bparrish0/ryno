@@ -120,14 +120,14 @@ const galleryPhotos = [
 
 const cells = document.querySelectorAll('.gallery-cell');
 if (cells.length) {
-  const cellIndices = Array.from({ length: cells.length }, (_, i) => i);
+  const counters = Array.from({ length: cells.length }, (_, i) => i);
 
   const swapCell = (cellIndex) => {
     const cell = cells[cellIndex];
     const currentImg = cell.querySelector('img:last-child');
-    const nextIndex = (galleryPhotos.indexOf(currentImg.src.split('/').slice(-2).join('/')) + cells.length) % galleryPhotos.length;
+    counters[cellIndex] = (counters[cellIndex] + cells.length) % galleryPhotos.length;
     const nextImg = document.createElement('img');
-    nextImg.src = galleryPhotos[nextIndex];
+    nextImg.src = galleryPhotos[counters[cellIndex]];
     nextImg.alt = 'RYNO dumpster';
     nextImg.className = 'absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 opacity-0';
     cell.appendChild(nextImg);
