@@ -121,18 +121,20 @@ const galleryPhotos = [
 const cells = document.querySelectorAll('.gallery-cell');
 if (cells.length) {
   const counters = Array.from({ length: cells.length }, (_, i) => i);
+  const transitionDuration = 8000;
+  const swapTimestamps = Array.from({ length: cells.length }, () => 0);
 
   const swapCell = (cellIndex) => {
     const cell = cells[cellIndex];
     const currentImg = cell.querySelector('img:last-child');
     counters[cellIndex] = (counters[cellIndex] + cells.length) % galleryPhotos.length;
+    swapTimestamps[cellIndex] = Date.now();
     const nextImg = document.createElement('img');
     nextImg.src = galleryPhotos[counters[cellIndex]];
     nextImg.alt = 'RYNO dumpster';
     nextImg.className = 'absolute inset-0 h-full w-full object-cover';
     nextImg.style.cssText = 'opacity:0; transform:scale(1.04); transition: opacity 8s ease, transform 8s ease !important;';
     cell.appendChild(nextImg);
-    // double-rAF ensures browser paints the initial state before transitioning
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         nextImg.style.opacity = '1';
@@ -145,7 +147,7 @@ if (cells.length) {
   };
 
   const scheduleNext = (cellIndex) => {
-    const delay = 6000 + Math.random() * 4000;
+    const delay = 8000 + Math.random() * 4000;
     setTimeout(() => {
       swapCell(cellIndex);
       scheduleNext(cellIndex);
@@ -155,7 +157,11 @@ if (cells.length) {
   cells.forEach((cell, i) => {
     cell.style.cursor = 'pointer';
     cell.addEventListener('click', () => {
-      const img = cell.querySelector('img:last-child');
+      const elapsed = Date.now() - swapTimestamps[i];
+      const progress = elapsed / transitionDuration;
+      const imgs = cell.querySelectorAll('img');
+      // If transition is less than 60% through, show the previous (first) image; otherwise show the new (last)
+      const img = (imgs.length > 1 && progress < 0.6) ? imgs[0] : imgs[imgs.length - 1];
       if (img) openLightbox(img.src);
     });
 
