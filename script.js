@@ -147,7 +147,7 @@ if (cells.length) {
   };
 
   const scheduleNext = (cellIndex) => {
-    const delay = 8000 + Math.random() * 4000;
+    const delay = 6000 + Math.random() * 6000;
     setTimeout(() => {
       swapCell(cellIndex);
       scheduleNext(cellIndex);
