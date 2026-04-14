@@ -129,20 +129,26 @@ if (cells.length) {
     const nextImg = document.createElement('img');
     nextImg.src = galleryPhotos[counters[cellIndex]];
     nextImg.alt = 'RYNO dumpster';
-    nextImg.className = 'absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 opacity-0';
+    nextImg.className = 'absolute inset-0 h-full w-full object-cover';
+    nextImg.style.cssText = 'opacity:0; transform:scale(1.04); transition: opacity 1.8s ease, transform 1.8s ease;';
     cell.appendChild(nextImg);
+    // double-rAF ensures browser paints the initial state before transitioning
     requestAnimationFrame(() => {
-      nextImg.style.opacity = '1';
-      currentImg.style.opacity = '0';
+      requestAnimationFrame(() => {
+        nextImg.style.opacity = '1';
+        nextImg.style.transform = 'scale(1)';
+        currentImg.style.transition = 'opacity 1.8s ease';
+        currentImg.style.opacity = '0';
+      });
     });
-    setTimeout(() => currentImg.remove(), 1100);
+    setTimeout(() => currentImg.remove(), 2000);
   };
 
   cells.forEach((cell, i) => {
     setTimeout(() => {
       swapCell(i);
-      setInterval(() => swapCell(i), 3500);
-    }, i * 600);
+      setInterval(() => swapCell(i), 4500);
+    }, i * 800);
   });
 }
 
