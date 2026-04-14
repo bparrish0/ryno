@@ -67,7 +67,7 @@
   <body class="bg-ryno-black text-white font-sans antialiased">
     <div class="noise-overlay" aria-hidden="true"></div>
 
-    <header class="fixed top-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
+    <header class="fixed top-0 z-50 hidden w-full border-b border-white/10 bg-black/45 backdrop-blur-xl md:block">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#home" class="flex items-center gap-3">
           <img src="Ryno Logos/header-logo.webp" alt="RYNO logo" class="h-12 w-12 object-contain" />
@@ -85,9 +85,9 @@
       </div>
     </header>
 
-    <main id="home" class="relative overflow-hidden pt-28">
+    <main id="home" class="relative overflow-hidden pt-6 md:pt-28">
       <section class="parallax-layer relative mx-auto grid max-w-7xl gap-10 px-6 pb-20 pt-8 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-speed="0.18">
-        <div class="space-y-7 reveal">
+        <div class="order-2 space-y-7 reveal lg:order-1">
           <p class="inline-flex items-center gap-2 rounded-full border border-ryno-orange/40 bg-ryno-orange/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-ryno-amber">
             <span class="relative inline-flex h-2.5 w-2.5">
               <span class="absolute inline-flex h-full w-full rounded-full bg-ryno-orange animate-pulse-ring"></span>
@@ -108,8 +108,8 @@
           </div>
         </div>
 
-        <div class="reveal-right flex items-center justify-center">
-          <img src="Ryno Logos/hero-logo.webp" alt="RYNO Roll Off logo" class="w-full max-w-xl" />
+        <div class="order-1 reveal-right flex items-center justify-center lg:order-2">
+          <img src="Ryno Logos/hero-logo.webp" alt="RYNO Roll Off logo" class="w-full max-w-xs md:max-w-xl" />
         </div>
       </section>
 
