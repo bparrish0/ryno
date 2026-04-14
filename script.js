@@ -130,18 +130,18 @@ if (cells.length) {
     nextImg.src = galleryPhotos[counters[cellIndex]];
     nextImg.alt = 'RYNO dumpster';
     nextImg.className = 'absolute inset-0 h-full w-full object-cover';
-    nextImg.style.cssText = 'opacity:0; transform:scale(1.04); transition: opacity 3s ease, transform 3s ease;';
+    nextImg.style.cssText = 'opacity:0; transform:scale(1.04); transition: opacity 5s ease, transform 5s ease;';
     cell.appendChild(nextImg);
     // double-rAF ensures browser paints the initial state before transitioning
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         nextImg.style.opacity = '1';
         nextImg.style.transform = 'scale(1)';
-        currentImg.style.transition = 'opacity 3s ease';
+        currentImg.style.transition = 'opacity 5s ease';
         currentImg.style.opacity = '0';
       });
     });
-    setTimeout(() => currentImg.remove(), 3200);
+    setTimeout(() => currentImg.remove(), 5200);
   };
 
   const scheduleNext = (cellIndex) => {
@@ -153,6 +153,12 @@ if (cells.length) {
   };
 
   cells.forEach((cell, i) => {
+    cell.style.cursor = 'pointer';
+    cell.addEventListener('click', () => {
+      const img = cell.querySelector('img:last-child');
+      if (img) openLightbox(img.src);
+    });
+
     const initialDelay = 4000 + Math.random() * 6000;
     setTimeout(() => {
       swapCell(i);
@@ -160,6 +166,37 @@ if (cells.length) {
     }, initialDelay);
   });
 }
+
+// Lightbox
+const lightbox = document.createElement('div');
+lightbox.id = 'lightbox';
+lightbox.style.cssText = 'display:none; position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.9); backdrop-filter:blur(8px); justify-content:center; align-items:center; cursor:pointer; opacity:0; transition:opacity 0.3s ease;';
+lightbox.innerHTML = '<img style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:12px; transform:scale(0.95); transition:transform 0.3s ease;" />';
+document.body.appendChild(lightbox);
+
+const lightboxImg = lightbox.querySelector('img');
+
+const openLightbox = (src) => {
+  lightboxImg.src = src;
+  lightbox.style.display = 'flex';
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      lightbox.style.opacity = '1';
+      lightboxImg.style.transform = 'scale(1)';
+    });
+  });
+};
+
+const closeLightbox = () => {
+  lightbox.style.opacity = '0';
+  lightboxImg.style.transform = 'scale(0.95)';
+  setTimeout(() => { lightbox.style.display = 'none'; }, 300);
+};
+
+lightbox.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lightbox.style.display === 'flex') closeLightbox();
+});
 
 form?.addEventListener('submit', (event) => {
   event.preventDefault();
