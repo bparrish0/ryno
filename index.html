@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RYNO Roll Off Dumpster Rental | Same Day Delivery & 24hr Service</title>
+    <meta
+      name="description"
+      content="RYNO Roll Off Dumpster Rental offers 15, 20, and 30 yard dumpsters with same day delivery and 24hr service."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              heading: ['Outfit', 'sans-serif']
+            },
+            colors: {
+              ryno: {
+                black: '#050505',
+                slate: '#111827',
+                orange: '#f97316',
+                amber: '#fb923c',
+                steel: '#9ca3af'
+              }
+            },
+            boxShadow: {
+              glow: '0 0 22px rgba(249, 115, 22, 0.55)',
+              soft: '0 20px 45px rgba(0,0,0,0.35)'
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { backgroundPosition: '-200% center' },
+                '100%': { backgroundPosition: '200% center' }
+              },
+              'pulse-ring': {
+                '0%': { transform: 'scale(0.85)', opacity: '0.9' },
+                '80%': { transform: 'scale(1.25)', opacity: '0' },
+                '100%': { transform: 'scale(1.35)', opacity: '0' }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' }
+              }
+            },
+            animation: {
+              shimmer: 'shimmer 3s linear infinite',
+              'pulse-ring': 'pulse-ring 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite',
+              float: 'float 5s ease-in-out infinite'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-ryno-black text-white font-sans antialiased">
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <header class="fixed top-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="#home" class="flex items-center gap-3">
+          <img src="Ryno Logos/image26.jpeg" alt="RYNO logo" class="h-12 w-12 rounded-full border border-white/20 object-cover" />
+          <div>
+            <p class="font-heading text-xl font-bold tracking-wide">RYNO Roll Off</p>
+            <p class="text-xs uppercase tracking-[0.2em] text-ryno-steel">Dumpster Rental</p>
+          </div>
+        </a>
+        <nav class="hidden items-center gap-6 md:flex">
+          <a href="#sizes" class="text-sm text-white/80 transition hover:text-ryno-orange">Sizes</a>
+          <a href="#gallery" class="text-sm text-white/80 transition hover:text-ryno-orange">Gallery</a>
+          <a href="#reviews" class="text-sm text-white/80 transition hover:text-ryno-orange">Reviews</a>
+          <a href="#contact" class="rounded-full border border-ryno-orange/50 px-5 py-2 text-sm font-semibold text-ryno-orange transition hover:bg-ryno-orange hover:text-black">Get a Quote</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home" class="relative overflow-hidden pt-28">
+      <section class="parallax-layer relative mx-auto grid max-w-7xl gap-10 px-6 pb-20 pt-8 lg:grid-cols-[1.2fr_1fr] lg:items-center" data-speed="0.18">
+        <div class="space-y-7 reveal">
+          <p class="inline-flex items-center gap-2 rounded-full border border-ryno-orange/40 bg-ryno-orange/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-ryno-amber">
+            <span class="relative inline-flex h-2.5 w-2.5">
+              <span class="absolute inline-flex h-full w-full rounded-full bg-ryno-orange animate-pulse-ring"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-ryno-orange"></span>
+            </span>
+            Same Day Delivery • 24hr Service
+          </p>
+          <h1 class="font-heading text-4xl font-extrabold leading-tight text-transparent md:text-6xl bg-[linear-gradient(120deg,#fff_15%,#f97316_45%,#fb923c_70%,#fff_100%)] bg-[length:200%_auto] bg-clip-text animate-shimmer">
+            Reliable Roll Off Dumpster Rental for Homes, Businesses & Job Sites.
+          </h1>
+          <p class="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+            RYNO delivers clean 15, 20, and 30 yard dumpsters with fast drop-off, easy pickup, and dependable local service.
+            Call now to reserve your container today.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="tel:17063393900" class="rounded-full bg-ryno-orange px-6 py-3 text-sm font-bold uppercase tracking-wider text-black shadow-glow transition hover:-translate-y-0.5">Call 706-339-3900</a>
+            <a href="#contact" class="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition hover:border-ryno-orange hover:text-ryno-orange">Email / Form Quote</a>
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <div class="glass-card overflow-hidden rounded-3xl border border-white/20 p-3 shadow-soft">
+            <img src="Ryno Photos/image0.jpeg" alt="RYNO dumpster service" class="h-[420px] w-full rounded-2xl object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <section id="sizes" class="mx-auto max-w-7xl px-6 py-20">
+        <div class="mb-10 reveal-left">
+          <p class="text-sm uppercase tracking-[0.25em] text-ryno-amber">Dumpster Sizes</p>
+          <h2 class="font-heading text-3xl font-bold md:text-5xl">Pick the Right Roll Off for Your Project</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="glass-card reveal-scale rounded-2xl p-6">
+            <h3 class="font-heading text-2xl font-bold text-ryno-orange">15 Yard</h3>
+            <p class="mt-4 text-white/75">Great for garage cleanouts, small remodels, and light construction debris.</p>
+          </article>
+          <article class="glass-card reveal-scale rounded-2xl p-6" style="transition-delay: 120ms">
+            <h3 class="font-heading text-2xl font-bold text-ryno-orange">20 Yard</h3>
+            <p class="mt-4 text-white/75">Ideal for roofing jobs, flooring projects, and whole-home decluttering.</p>
+          </article>
+          <article class="glass-card reveal-scale rounded-2xl p-6" style="transition-delay: 220ms">
+            <h3 class="font-heading text-2xl font-bold text-ryno-orange">30 Yard</h3>
+            <p class="mt-4 text-white/75">Best for large construction sites, major renovations, and bulky debris.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery" class="mx-auto max-w-7xl px-6 pb-20">
+        <div class="mb-10 reveal">
+          <p class="text-sm uppercase tracking-[0.25em] text-ryno-amber">On-Site Photos</p>
+          <h2 class="font-heading text-3xl font-bold md:text-5xl">Dumpsters in Action</h2>
+        </div>
+        <div class="grid auto-rows-[210px] grid-cols-2 gap-4 md:grid-cols-4">
+          <img src="Ryno Photos/image18.jpeg" alt="Dumpster at driveway" class="reveal-left h-full w-full rounded-2xl object-cover" />
+          <img src="Ryno Photos/image23.jpeg" alt="Dumpster near school" class="reveal h-full w-full rounded-2xl object-cover" />
+          <img src="Ryno Photos/image12.jpeg" alt="Dumpster delivery" class="reveal-right h-full w-full rounded-2xl object-cover" />
+          <img src="Ryno Photos/image8.jpeg" alt="Roll off in neighborhood" class="reveal h-full w-full rounded-2xl object-cover" />
+          <img src="Ryno Photos/image5.jpeg" alt="Orange dumpster on trailer" class="reveal-left col-span-2 h-full w-full rounded-2xl object-cover md:col-span-2" />
+          <img src="Ryno Photos/image24.jpeg" alt="Dumpster at curb" class="reveal-right col-span-2 h-full w-full rounded-2xl object-cover md:col-span-2" />
+        </div>
+      </section>
+
+      <section id="reviews" class="mx-auto max-w-7xl px-6 pb-20">
+        <div class="mb-8 reveal">
+          <p class="text-sm uppercase tracking-[0.25em] text-ryno-amber">Google Reviews</p>
+          <h2 class="font-heading text-3xl font-bold md:text-5xl">Customers Love RYNO</h2>
+        </div>
+        <div class="grid gap-5 md:grid-cols-3">
+          <blockquote class="glass-card reveal-scale rounded-2xl p-6">
+            <p class="mb-4 text-ryno-amber">★★★★★</p>
+            <p class="text-white/80">"Fast delivery, clean dumpster, and super easy pickup. Great communication the whole time."</p>
+            <footer class="mt-4 text-sm text-white/60">— Google Customer</footer>
+          </blockquote>
+          <blockquote class="glass-card reveal-scale rounded-2xl p-6" style="transition-delay: 120ms">
+            <p class="mb-4 text-ryno-amber">★★★★★</p>
+            <p class="text-white/80">"Needed same-day service and RYNO came through. Highly recommend for renovation jobs."</p>
+            <footer class="mt-4 text-sm text-white/60">— Google Customer</footer>
+          </blockquote>
+          <blockquote class="glass-card reveal-scale rounded-2xl p-6" style="transition-delay: 220ms">
+            <p class="mb-4 text-ryno-amber">★★★★★</p>
+            <p class="text-white/80">"Great pricing and very professional. I’ll use them again for future cleanouts."</p>
+            <footer class="mt-4 text-sm text-white/60">— Google Customer</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="contact" class="mx-auto max-w-7xl px-6 pb-24">
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div class="reveal-left space-y-4">
+            <p class="text-sm uppercase tracking-[0.25em] text-ryno-amber">Get a Fast Quote</p>
+            <h2 class="font-heading text-3xl font-bold md:text-5xl">Email Us in Seconds</h2>
+            <p class="text-white/80">Fill this out and we’ll contact you quickly. Prefer phone? Call <a class="text-ryno-orange" href="tel:17063393900">706-339-3900</a>.</p>
+            <a class="inline-flex rounded-full border border-ryno-orange/60 px-5 py-3 text-sm font-semibold text-ryno-orange transition hover:bg-ryno-orange hover:text-black" href="mailto:info@rynodumpsters.com?subject=Dumpster%20Rental%20Quote">Open Email App</a>
+          </div>
+
+          <form id="quote-form" class="glass-card reveal-right space-y-4 rounded-3xl p-6" novalidate>
+            <div>
+              <label for="name" class="mb-1 block text-sm">Name</label>
+              <input id="name" name="name" required class="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 outline-none ring-0 transition focus:border-ryno-orange" />
+            </div>
+            <div>
+              <label for="email" class="mb-1 block text-sm">Email</label>
+              <input id="email" name="email" type="email" required class="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 outline-none transition focus:border-ryno-orange" />
+            </div>
+            <div class="custom-select" data-select>
+              <label for="size-btn" class="mb-1 block text-sm">Dumpster Size</label>
+              <button id="size-btn" type="button" class="select-trigger w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-left" aria-haspopup="listbox" aria-expanded="false">Choose a size</button>
+              <ul class="select-menu hidden" role="listbox" tabindex="-1" aria-label="Dumpster sizes">
+                <li role="option" tabindex="0" data-value="15 Yard">15 Yard</li>
+                <li role="option" tabindex="-1" data-value="20 Yard">20 Yard</li>
+                <li role="option" tabindex="-1" data-value="30 Yard">30 Yard</li>
+              </ul>
+              <input id="size" name="size" type="hidden" required />
+            </div>
+            <div>
+              <label for="message" class="mb-1 block text-sm">Project Details</label>
+              <textarea id="message" name="message" rows="4" class="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 outline-none transition focus:border-ryno-orange" placeholder="Address, timeline, and anything else..."></textarea>
+            </div>
+            <button class="w-full rounded-xl bg-ryno-orange px-5 py-3 font-bold text-black transition hover:shadow-glow">Send Quote Request</button>
+            <p id="form-feedback" class="min-h-6 text-sm text-ryno-amber"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-black/60 py-8">
+      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-white/70 md:flex-row">
+        <p>© <span id="year"></span> RYNO Roll Off Dumpster Rental</p>
+        <p>Same Day Delivery • 24hr Service • 706-339-3900</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
