@@ -153,10 +153,11 @@ if (cells.length) {
   };
 
   cells.forEach((cell, i) => {
+    const initialDelay = 4000 + Math.random() * 6000;
     setTimeout(() => {
       swapCell(i);
       scheduleNext(i);
-    }, i * 800);
+    }, initialDelay);
   });
 }
 
