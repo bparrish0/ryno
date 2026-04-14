@@ -130,18 +130,18 @@ if (cells.length) {
     nextImg.src = galleryPhotos[counters[cellIndex]];
     nextImg.alt = 'RYNO dumpster';
     nextImg.className = 'absolute inset-0 h-full w-full object-cover';
-    nextImg.style.cssText = 'opacity:0; transform:scale(1.04); transition: opacity 5s ease, transform 5s ease;';
+    nextImg.style.cssText = 'opacity:0; transform:scale(1.04); transition: opacity 8s ease, transform 8s ease !important;';
     cell.appendChild(nextImg);
     // double-rAF ensures browser paints the initial state before transitioning
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         nextImg.style.opacity = '1';
         nextImg.style.transform = 'scale(1)';
-        currentImg.style.transition = 'opacity 5s ease';
+        currentImg.style.setProperty('transition', 'opacity 8s ease', 'important');
         currentImg.style.opacity = '0';
       });
     });
-    setTimeout(() => currentImg.remove(), 5200);
+    setTimeout(() => currentImg.remove(), 8500);
   };
 
   const scheduleNext = (cellIndex) => {
