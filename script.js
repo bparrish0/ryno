@@ -105,6 +105,34 @@ if (selectRoot) {
   });
 }
 
+const galleryScroll = document.getElementById('gallery-scroll');
+if (galleryScroll) {
+  let scrollSpeed = 1;
+  let paused = false;
+  let resumeTimer;
+
+  const autoScroll = () => {
+    if (!paused) {
+      galleryScroll.scrollLeft += scrollSpeed;
+      if (galleryScroll.scrollLeft >= galleryScroll.scrollWidth - galleryScroll.clientWidth) {
+        galleryScroll.scrollLeft = 0;
+      }
+    }
+    requestAnimationFrame(autoScroll);
+  };
+
+  const pauseAndResume = () => {
+    paused = true;
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { paused = false; }, 2000);
+  };
+
+  galleryScroll.addEventListener('pointerdown', pauseAndResume);
+  galleryScroll.addEventListener('wheel', pauseAndResume, { passive: true });
+
+  requestAnimationFrame(autoScroll);
+}
+
 form?.addEventListener('submit', (event) => {
   event.preventDefault();
   if (!form.reportValidity()) {
