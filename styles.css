@@ -1,0 +1,105 @@
+:root {
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f97316 #121212;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid #121212;
+  background: linear-gradient(#fb923c, #f97316);
+}
+
+body {
+  background: radial-gradient(circle at 10% 10%, rgba(249, 115, 22, 0.16), transparent 36%),
+    radial-gradient(circle at 85% 5%, rgba(251, 146, 60, 0.12), transparent 34%),
+    #050505;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+.glass-card {
+  backdrop-filter: blur(18px);
+  background: rgba(14, 14, 14, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal {
+  transform: translateY(24px);
+}
+
+.reveal-left {
+  transform: translateX(-26px);
+}
+
+.reveal-right {
+  transform: translateX(26px);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+.parallax-layer {
+  will-change: transform;
+}
+
+.custom-select {
+  position: relative;
+}
+
+.select-menu {
+  margin-top: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(16px);
+  background: rgba(8, 8, 8, 0.96);
+  position: absolute;
+  width: 100%;
+  z-index: 30;
+  overflow: hidden;
+}
+
+.select-menu li {
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  transition: background 240ms var(--ease-out);
+}
+
+.select-menu li:hover,
+.select-menu li:focus,
+.select-menu li[aria-selected='true'] {
+  background: rgba(249, 115, 22, 0.16);
+  outline: none;
+}
