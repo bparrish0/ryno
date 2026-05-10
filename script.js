@@ -106,16 +106,16 @@ if (selectRoot) {
 }
 
 const galleryPhotos = [
-  'Ryno Photos/image0.webp','Ryno Photos/image1.webp','Ryno Photos/image2.webp',
-  'Ryno Photos/image3.webp','Ryno Photos/image4.webp','Ryno Photos/image5.webp',
-  'Ryno Photos/image7.webp','Ryno Photos/image8.webp','Ryno Photos/image9.webp',
-  'Ryno Photos/image10.webp','Ryno Photos/image11.webp','Ryno Photos/image12.webp',
-  'Ryno Photos/image13.webp','Ryno Photos/image14.webp','Ryno Photos/image16.webp',
-  'Ryno Photos/image17.webp','Ryno Photos/image18.webp','Ryno Photos/image19.webp',
-  'Ryno Photos/image20.webp','Ryno Photos/image22.webp','Ryno Photos/image23.webp',
-  'Ryno Photos/image24.webp','Ryno Photos/image25.webp','Ryno Photos/image27.webp',
-  'Ryno Photos/image28.webp','Ryno Photos/image29.webp','Ryno Photos/image30.webp',
-  'Ryno Photos/image31.webp'
+  '/Ryno%20Photos/image0.webp','/Ryno%20Photos/image1.webp','/Ryno%20Photos/image2.webp',
+  '/Ryno%20Photos/image3.webp','/Ryno%20Photos/image4.webp','/Ryno%20Photos/image5.webp',
+  '/Ryno%20Photos/image7.webp','/Ryno%20Photos/image8.webp','/Ryno%20Photos/image9.webp',
+  '/Ryno%20Photos/image10.webp','/Ryno%20Photos/image11.webp','/Ryno%20Photos/image12.webp',
+  '/Ryno%20Photos/image13.webp','/Ryno%20Photos/image14.webp','/Ryno%20Photos/image16.webp',
+  '/Ryno%20Photos/image17.webp','/Ryno%20Photos/image18.webp','/Ryno%20Photos/image19.webp',
+  '/Ryno%20Photos/image20.webp','/Ryno%20Photos/image22.webp','/Ryno%20Photos/image23.webp',
+  '/Ryno%20Photos/image24.webp','/Ryno%20Photos/image25.webp','/Ryno%20Photos/image27.webp',
+  '/Ryno%20Photos/image28.webp','/Ryno%20Photos/image29.webp','/Ryno%20Photos/image30.webp',
+  '/Ryno%20Photos/image31.webp'
 ];
 
 const cells = document.querySelectorAll('.gallery-cell');
