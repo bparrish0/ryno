@@ -297,6 +297,10 @@
               <label for="message" class="mb-1 block text-sm">Project Details</label>
               <textarea id="message" name="message" rows="4" class="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 outline-none transition focus:border-ryno-orange" placeholder="Address, timeline, and anything else..."></textarea>
             </div>
+            <div style="position:absolute; left:-9999px; height:0; overflow:hidden" aria-hidden="true">
+              <label for="company">Company</label>
+              <input id="company" name="company" tabindex="-1" autocomplete="off" />
+            </div>
             <button class="w-full rounded-xl bg-ryno-orange px-5 py-3 font-bold text-black transition hover:shadow-glow">Send Quote Request</button>
             <p id="form-feedback" class="min-h-6 text-sm text-ryno-amber"></p>
           </form>

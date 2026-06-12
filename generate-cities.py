@@ -88,15 +88,12 @@ def transform_template(html, city):
         f"Also Serving Areas Around {name}"
     )
 
-    # Convert each city in the service area list to a link to its page (except current)
-    for c in CITIES:
-        c_full = f"{c['name']}, {c['state']}"
-        old_li = f'<li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ryno-orange"></span>{c_full}</li>'
-        if c['slug'] == slug:
-            new_li = f'<li class="flex items-center gap-2 font-semibold text-ryno-orange"><span class="h-1.5 w-1.5 rounded-full bg-ryno-orange"></span>{c_full} (you are here)</li>'
-        else:
-            new_li = f'<li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ryno-orange"></span><a class="transition hover:text-ryno-orange" href="/dumpster-rental-{c["slug"]}/">{c_full}</a></li>'
-        html = html.replace(old_li, new_li)
+    # The homepage links every city in the service area list; on a city's own
+    # page, swap its link for a highlighted "(you are here)" marker
+    c_full = f"{name}, {state}"
+    linked_li = f'<li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-ryno-orange"></span><a class="transition hover:text-ryno-orange" href="/dumpster-rental-{slug}/">{c_full}</a></li>'
+    here_li = f'<li class="flex items-center gap-2 font-semibold text-ryno-orange"><span class="h-1.5 w-1.5 rounded-full bg-ryno-orange"></span>{c_full} (you are here)</li>'
+    html = html.replace(linked_li, here_li)
 
     # Asset paths to absolute (so they resolve from subdirectories)
     html = html.replace('href="favicon.png"', 'href="/favicon.png"')

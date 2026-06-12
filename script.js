@@ -204,7 +204,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && lightbox.style.display === 'flex') closeLightbox();
 });
 
-form?.addEventListener('submit', (event) => {
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!form.reportValidity()) {
     feedback.textContent = 'Please fill out all required fields.';
@@ -213,16 +213,32 @@ form?.addEventListener('submit', (event) => {
   }
 
   const data = new FormData(form);
-  const subject = encodeURIComponent(`Quote Request - ${data.get('size') || 'Dumpster Rental'}`);
-  const body = encodeURIComponent(
-    `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nSize: ${data.get('size')}\n\nProject Details:\n${data.get('message')}`
-  );
-  const emailHref = `mailto:ryan@rynodumps.com?subject=${subject}&body=${body}`;
+  const submitBtn = form.querySelector('button:not([type="button"])');
+  submitBtn.disabled = true;
+  feedback.textContent = 'Sending your quote request...';
+  feedback.className = 'min-h-6 text-sm text-ryno-amber';
 
-  feedback.textContent = 'Opening your email app with your quote request...';
-  feedback.className = 'min-h-6 text-sm text-emerald-400';
+  try {
+    const res = await fetch('/api/quote', { method: 'POST', body: data });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-  setTimeout(() => {
-    window.location.href = emailHref;
-  }, 380);
+    feedback.textContent = "Thanks! Your request has been sent. We'll get back to you shortly.";
+    feedback.className = 'min-h-6 text-sm text-emerald-400';
+    form.reset();
+    const sizeBtn = form.querySelector('#size-btn');
+    if (sizeBtn) sizeBtn.textContent = 'Choose a size';
+  } catch (err) {
+    // Fall back to the visitor's email app so the lead isn't lost
+    const subject = encodeURIComponent(`Quote Request - ${data.get('size') || 'Dumpster Rental'}`);
+    const body = encodeURIComponent(
+      `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nSize: ${data.get('size')}\n\nProject Details:\n${data.get('message')}`
+    );
+    feedback.textContent = "We couldn't send automatically — opening your email app instead...";
+    feedback.className = 'min-h-6 text-sm text-ryno-amber';
+    setTimeout(() => {
+      window.location.href = `mailto:ryan@rynodumps.com?subject=${subject}&body=${body}`;
+    }, 380);
+  } finally {
+    submitBtn.disabled = false;
+  }
 });
