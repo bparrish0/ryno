@@ -1,0 +1,6 @@
+.git
+.assetsignore
+.gitignore
+generate-cities.py
+wrangler.jsonc
+node_modules
