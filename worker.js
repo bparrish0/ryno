@@ -1,5 +1,9 @@
+import { WorkerMailer } from 'worker-mailer';
+
 const EMAIL_TO = 'ryan@rynodumps.com';
-const EMAIL_FROM = 'RYNO Website <quotes@rynodumps.com>';
+const SMTP_HOST = 'mail.smtp2go.com';
+const SMTP_PORT = 587;
+const SMTP_USER = 'alerts@parrish.biz';
 
 export default {
   async fetch(request, env) {
@@ -37,28 +41,31 @@ async function handleQuote(request, env) {
     return json({ error: 'Please provide your name and a valid email.' }, 400);
   }
 
-  if (!env.RESEND_API_KEY) {
+  if (!env.SMTP_PASSWORD) {
     return json({ error: 'Email service is not configured yet.' }, 503);
   }
 
   const page = request.headers.get('referer') || 'unknown';
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: EMAIL_FROM,
-      to: [EMAIL_TO],
-      reply_to: email,
-      subject: `Quote Request - ${size || 'Dumpster Rental'}`,
-      text: `Name: ${name}\nEmail: ${email}\nSize: ${size || 'Not selected'}\n\nProject Details:\n${message || '(none provided)'}\n\nSubmitted from: ${page}`,
-    }),
-  });
-
-  if (!res.ok) {
-    console.error('Resend error', res.status, await res.text());
+  try {
+    await WorkerMailer.send(
+      {
+        host: SMTP_HOST,
+        port: SMTP_PORT,
+        secure: false,
+        startTls: true,
+        authType: 'login',
+        credentials: { username: SMTP_USER, password: env.SMTP_PASSWORD },
+      },
+      {
+        from: { name: 'RYNO Website', email: SMTP_USER },
+        to: EMAIL_TO,
+        reply: { name, email },
+        subject: `Quote Request - ${size || 'Dumpster Rental'}`,
+        text: `Name: ${name}\nEmail: ${email}\nSize: ${size || 'Not selected'}\n\nProject Details:\n${message || '(none provided)'}\n\nSubmitted from: ${page}`,
+      }
+    );
+  } catch (err) {
+    console.error('SMTP error', err);
     return json({ error: 'Failed to send your request. Please call or email us directly.' }, 502);
   }
 
